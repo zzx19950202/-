@@ -1,0 +1,22 @@
+search: function() {
+			// 搜索操作
+			$('#search').blur(function() {
+				setTimeout(function() {
+					$(".seRes").hide();
+				}, 300)
+			})
+			$('#search').on("input", function() {
+				//去除前后空格
+				var val = $(this).val().trim();
+				//匹配中文
+				var reg = /[\u4e00-\u9fa5]/;
+				// console.log(val, reg.test(val));
+				//实时搜索
+				if (reg.test(val)) {
+					var data = "name=" + val;
+					initScreen.renderList(data, 1);
+				} else {
+					$(".seRes").html("").hide();
+				}
+			})
+		},
