@@ -1,4 +1,4 @@
-search: function() {
+function() {
 			// 搜索操作
 			$('#search').blur(function() {
 				setTimeout(function() {
