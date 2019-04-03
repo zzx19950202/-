@@ -1,0 +1,31 @@
+function() {
+			$(".reSelect").on("click", "var", function() {
+				// $("var").click(function() {
+				if ($(this).hasClass("act")) {
+					$(this).removeClass("act");
+					$(".sels").hide();
+				} else {
+					$(this).addClass("act").siblings("var").removeClass("act");
+					var x = $(this).index();
+					$(".sels").eq(x).show().siblings(".sels").hide();
+				}
+			})
+			$(".sels li").click(function() {
+				var m = $(this).parent().index(".sels");
+				var val = $(this).attr("data-val");//返回当前data-val的值
+
+				$("var").eq(m).attr("data-val", val).removeClass("act").find("span").html($(this).html());
+				$(".sels").hide();
+				//获取所有var标签的data-val值;
+				// i表示var元素的位置
+				var data = "";
+				$("var").each(function(i) {
+					if ($(this).attr("data-val")) {
+						data += "tag" + (i + 1) + "=" + $(this).attr("data-val") + "&";
+					}
+				})
+				// data = data.slice(0, data.length - 1); //删除最后多余的&
+				
+			})
+
+		}
